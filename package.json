@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "engines": {
+    "node": "18.8.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "name": "nodejslogin",
+  "version": "1.0.0",
+  "description": "nodejs login site",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}

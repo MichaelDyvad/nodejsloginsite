@@ -4,13 +4,21 @@
     "node": "18.8.0"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
   },
   "name": "nodejslogin",
   "version": "1.0.0",
   "description": "nodejs login site",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start-dev": "cross-env PORT=8080 nodemon.cmd app.js",
+    "start-prod": "node app.js"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3"
   }
 }

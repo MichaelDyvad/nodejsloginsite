@@ -82,7 +82,7 @@ app.get("/signup", (req, res) => {
     res.send(signupPageRender);
 });
 
-app.get("/variablesandfunctions", (req, res) => {
+app.get("/javascript", (req, res) => {
     res.send(javascriptPage);
 })
 

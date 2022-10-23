@@ -12,8 +12,9 @@
   <div class="w3-container" id="section-1">
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Express</span></h5>
-      <p>Express is a back-end web application framework which is used to build RESTful API's. Express also handles routing, http methods and which port the webapplication is running on. Express is installed with npm and imported into app.js</p>
-      <p>Express is also used to tell the app which modules and functions of the modules the app will inclde. For example app.use(express.json()) or app.use(bodyParser.json()).</p>
+      <p>Express is a back-end web application framework which is used to build RESTful API's. Express also handles routing, http methods and which port the webapplication is running on.</p>
+      <p>Express is installed with npm and imported into app.js. After the import in app.js we instantiate the express library into a const variable. Now everytime we use app. we get the functions of the express library to tailor the project to our needs.</p>
+      <p>Express is therefore used to tell the app which functions the app will inclde. For example app.use(express.json()) or app.use(bodyParser.json()).</p>
       <div class="w3-panel w3-leftbar w3-light-grey">
         <pre>
 import express from "express"
@@ -36,10 +37,11 @@ const server = app.listen(PORT, (error)=> {
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">npm and tools</span></h5>
       <p>npm(node package manager) is an online repository for publishing open-source Node.js project. npm is also a command line utiliy that provides package installation, version management, and dependency management.</p>
-      <p>Diffrent packages we install with npm is downloaded and update from npm's online repository</p>
+      <p>Diffrent packages we install with npm is downloaded and update from npm's online repository.</p>
       <p>Nodemon: is a developer tool we use to make the server restart automatically when changes in the files are detected.</p>
       <p>Cross-env: makes it possible to have a single command in the script that can read the environment variable properly on every platform. The problem without cross-env is the syntax is diffrent on os platforms and windows will usually experience the most problems. The use of cross-env is therefore a common ground for all developers on the node.js project.</p>
       <p>Dotenv: is used when connection to a database is needed. Dotenv will automatically load environment variables from a .env file into process.env </p>
+      <p>Mysql: is a module we use to create a connection to a database. The mysql module allows us to make mysql queries from our server to database. In this application the mysql queries have been used to find emails and passwords for the login and signup part.</p>
       <div class="w3-panel w3-leftbar w3-light-grey">
         <pre>
 //npm installation
@@ -51,6 +53,7 @@ npm install express
 npm install --save-dev nodemon
 npm install --save-dev cross-env
 npm install --save-dev dotenv
+npm install mysql
         </pre>
       </div>
       <div class="w3-panel w3-leftbar w3-light-grey">
@@ -74,9 +77,9 @@ const DB_PORT = process.env.DB_PORT
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Package.json</span></h5>
       <p>package.json is a server site file which containts meta-data about the Node.js project. The file is used to provide infomation to npm about the project and which dependencies is used in the project</p>
-      <p>It is common to use npm install after the package.json file has defined the dependencies needed in the project</p>
-      <p>package.json contains meta data like "type", "engines", "dependencies", "scripts" and "devDependencies"</p>
-      <p>Scipts: is a way to make npm run diffrent terminal commands which is defined in the meta-data script section. An example of this would be running the project with nodemon.cmd and giving meta-data needed to deploy a project</p>
+      <p>It is common to use npm install after the package.json file has defined the dependencies needed in the project.</p>
+      <p>package.json contains meta data like "type", "engines", "dependencies", "scripts" and "devDependencies".</p>
+      <p>Scipts: is a way to make npm run diffrent terminal commands which is defined in the meta-data script section. An example of this would be running the project with nodemon.cmd and giving meta-data needed to deploy a project.</p>
       <p>Dependencies & devDependencies: is the diffrent dependencies we use in the project and the version they run.</p>
       <div class="w3-panel w3-leftbar w3-light-grey">
         <pre>

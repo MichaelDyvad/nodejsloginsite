@@ -13,7 +13,7 @@
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Callback functions</span></h5>
             <p>A callback function is a function passed to another function as an argument. The way a callback functions operates is by being invoked after the first function completes.</p>
-            <p>The reason why we need Callback Functions in Javascript is because Javascript is asynchronous. So when a javascript program is running, other code can still run even though a function is not complete. A callback's function is therefore to execute code in reponse to an event.</p>
+            <p>The reason why we need Callback Functions in Javascript is because Javascript is asynchronous. So when a javascript program is running, other code can still run even though a function is not complete. A callback's functions function is therefore to execute code in reponse to an event.</p>
       <div class="w3-panel w3-leftbar w3-light-grey">
             <pre>
 app.get("/", (req, res) => {
@@ -35,9 +35,9 @@ app.get("/signup", (req, res) => {
   <div class="w3-container" id="section-2">
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Arrow Functions</span></h5>
-      <p>Arrow functions were introduces in ES6 and makes it possible for us to write sorter functions</p>
-      <p>In arrow function there is a implicit return. Arrow function does not have their own "this" keyword and "this" does not change the value of car in the function.</p>
-      <p>The implicit return in arrowfunctions is great for making one-line operations for looping datastructures with loops such as map or filter</p>
+      <p>Arrow functions were introduces in ES6 and makes it possible for us to write shorter functions.</p>
+      <p>In arrow function there is a implicit return. Arrow function does not have their own "this" keyword and "this" does not change the value of car in the function in the example below.</p>
+      <p>The implicit return in arrowfunctions is great for making one-line operations for looping datastructures with loops such as map or filter.</p>
       <div class="w3-panel w3-leftbar w3-light-grey">
         <pre>
 //arrow function vs. regular function and the use of this keyword
@@ -63,11 +63,11 @@ newCar.regularFunction(); // Ford
     <div class="w3-content" style="max-width:700px">
       <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Loops</span></h5>
       <p>Loop methods in javascript is: </p>
-      <p>map() : The map() method is for looping 1:1 and returns a new array. The map() method calls a function for each element in an array and will not change the original content</p>
-      <p>filter() : The filter() method filtrate the array on some perameter that we provide. The filter() methods creates a new array with the elements that passed the parameters we provided</p>
-      <p>reduce() : The reduce() methods purpose is to reduce the content in the data structure. The method executes a reducer function which returns the funtions accumulated result</p>
-      <p>forEach() : The forEach() methods iterates over every element in the given data structure. </p>
-      <p>for() : The vanilla for loop is only for finger counting</p>
+      <p>map() : The map() method is for looping 1:1 and returns a new array. The map() method calls a function for each element in an array and will not change the original content.</p>
+      <p>filter() : The filter() method filtrate the array on some perameter that we provide. The filter() methods creates a new array with the elements that passed the parameters we provided.</p>
+      <p>reduce() : The reduce() methods purpose is to reduce the content in the data structure. The method executes a reducer function which returns the funtions accumulated result.</p>
+      <p>forEach() : The forEach() methods iterates over every element in the given data structure.</p>
+      <p>for() : The vanilla for loop is only for finger counting.</p>
       <div class="w3-panel w3-leftbar w3-light-grey">
         <pre>
 const barbieMovies = [

@@ -7,7 +7,3 @@ links.forEach((item) => {
     })
 })
 
-
-
-
-//https://www.youtube.com/watch?v=23JQzsz9BlY&ab_channel=%5BSquareBrackets%5D

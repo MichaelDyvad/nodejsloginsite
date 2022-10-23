@@ -1,0 +1,173 @@
+<h1>Javscript</h1>
+<div class="scroll-menu">
+  <h3>Scroll section</h3>
+  <a data-link="section-1" class="scroll-to"><button class="w3-button w3-light-blue">Callback Functions</button></a>
+  <a data-link="section-2" class="scroll-to"><button class="w3-button w3-light-blue">Arrow Functions</button></a>
+  <a data-link="section-3" class="scroll-to"><button class="w3-button w3-light-blue">Loops</button></a>
+  <a data-link="section-4" class="scroll-to"><button class="w3-button w3-light-blue">Fetching</button></a>
+  <a data-link="section-5" class="scroll-to"><button class="w3-button w3-light-blue">Variables</button></a>
+  <a data-link="section-6" class="scroll-to"><button class="w3-button w3-light-blue">Data Types and Structures</button></a>
+  </div>
+  
+<div class="w3-container" id="section-1">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Callback functions</span></h5>
+            <p>A callback function is a function passed to another function as an argument. The way a callback functions operates is by being invoked after the first function completes.</p>
+            <p>The reason why we need Callback Functions in Javascript is because Javascript is asynchronous. So when a javascript program is running, other code can still run even though a function is not complete. A callback's function is therefore to execute code in reponse to an event.</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+            <pre>
+app.get("/", (req, res) => {
+  res.send(frontPageRender);
+});
+
+app.get("/login", (req, res) => {
+    res.send(loginPageRender);
+});
+
+app.get("/signup", (req, res) => {
+    res.send(signupPageRender);
+});
+          </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-2">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Arrow Functions</span></h5>
+      <p>Arrow functions were introduces in ES6 and makes it possible for us to write sorter functions</p>
+      <p>In arrow function there is a implicit return. Arrow function does not have their own "this" keyword and "this" does not change the value of car in the function.</p>
+      <p>The implicit return in arrowfunctions is great for making one-line operations for looping datastructures with loops such as map or filter</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+//arrow function vs. regular function and the use of this keyword
+const car = "Volvo"
+    let newCar = {
+    car : "Ford",
+    arrowFunction: () => {
+        console.log(this.name); 
+    },
+    regularFunction() {
+        console.log(this.name); 
+    }   
+}
+
+newCar.arrowFunction(); // Volvo
+newCar.regularFunction(); // Ford
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-3">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Loops</span></h5>
+      <p>Loop methods in javascript is: </p>
+      <p>map() : The map() method is for looping 1:1 and returns a new array. The map() method calls a function for each element in an array and will not change the original content</p>
+      <p>filter() : The filter() method filtrate the array on some perameter that we provide. The filter() methods creates a new array with the elements that passed the parameters we provided</p>
+      <p>reduce() : The reduce() methods purpose is to reduce the content in the data structure. The method executes a reducer function which returns the funtions accumulated result</p>
+      <p>forEach() : The forEach() methods iterates over every element in the given data structure. </p>
+      <p>for() : The vanilla for loop is only for finger counting</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+const barbieMovies = [
+    { name: "Swan lake", year: 2001},
+    { name: "Princess and the pauper", year: 2008},
+    { name: "Fairies", year: 2014}, 
+    ];
+
+//Map
+const ratedBarbieMovies = barbieMovies.map((movie) => {
+    movie.rating = 10;
+    return movie;
+    })
+
+//Filter
+const recentBarbieMovies = barbieMovies.filter((movie) => 
+    movie.year > 2005)
+
+//Foreach
+const eachBarbaieMovie = barbieMovies.forEach((movie) => {
+      console.log(movie)
+    })
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-4">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Fetching</span></h5>
+      <p>Fetching in javascript is an important feature when it comes to API's. Fetching makes it possible to get json data on diffrent topics like pokemon.</p>
+      <p>Fetching gets the data from API's and we can use the reponse to tailor the data to our own needs. In the frontend fetching below we can get the correct img on a pokemon based on id. This is an example of how we can use the fetched data to accommodate our needs.</p>
+      <p></p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+//Fetching back-end to make an api from an online api
+  router.get("/api/pokemon", (req, res) => {
+    fetch("https://pokeapi.co/api/v2/pokemon")
+    .then(res => res.json())
+    .then(data => {
+        res.send({pokemon:data})
+    })
+  });
+
+//Fetching front-end to generate the correct pokemon img on id
+fetch(`/api/pokemon/${pokemonName}`)
+.then(res => res.json())
+.then(pokemon => {
+  
+    const battlingPokemonImage = document.getElementById("battling-pokemon-sprite")
+    battlingPokemonImage.src = pokemon.sprites.other.dream_world.front_default
+  })
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-5">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Variables</span></h5>
+      <p>Let : Is changeable and is used when we know that the value can change and may be changed</p>
+      <p>Var : is global and therefore not prefered anymore</p>
+      <p>Const : The const variable is unchangeable and is preferred if we know we dont want the value to change. It is possible to add to a const for an example array</p>
+
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+//Variable intializing
+const name = "michael"
+let number = 2
+var dontUseGlobal = 23
+
+//Example of why we dont use var
+function loopArray (array) {
+  for(var i = 0; i < array.length; i++) {
+    console.log('Element ', array[i]);
+  }
+  
+  console.log('It is possible to use the variable i outside the scope: ', i);
+}
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-6">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Data Types and Data Structures</span></h5>
+      <p>The primitive data types in javascript is : Boolean type. Null type. Undefined type. Number type. BigInt type. String type. Symbol type. It is possible to use the typeof operator which tells the developer which datatype the variable is</p>
+      <p>Objects : will be variables too, but can contain many values. Objects is a key pair value, which can descripe for example a car, person etc.</p>
+      <p>Datastrucures : Array, Set, Hash </p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+const person = {name: "michael", lastname: "dyvad"} //Object
+const number = 10 //Number
+const word = "qwerty" //String
+
+const persons = ["michael", "martin", "chris"] //Array
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="./pages/topics/scroll.js"></script>

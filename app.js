@@ -15,6 +15,7 @@ const app = express();
 
 app.use(express.static("public"));
 
+//Body parser is used to read the email and password input directly from the html with fx. req.body.email
 app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded({
@@ -48,6 +49,27 @@ const signupPageRender = renderPage("/login_signup/signup.html", {
     + `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`
 })
 
+const javascriptPage = renderPage("/topics/javascript/javascript.html", {
+    tabTitle: "Javascript",
+    cssLink: `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`
+    + `<link rel="stylesheet" href="./pages/frontpage/frontpage.css">`
+})
+
+const restApiPage = renderPage("/topics/rest_api/restapi.html", {
+    tabTitle: "REST API",
+    cssLink: `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`
+})
+
+const nodeJSPage = renderPage("/topics/nodejs/nodejs.html", {
+    tabTitle: "NodeJS",
+    cssLink: `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`
+})
+
+const adminPage = renderPage("/admin_panel/admin.html", {
+    tabTitle: "AdminPanel",
+    cssLink: `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`
+})
+
 app.get("/", (req, res) => {
     res.send(frontPageRender);
 });
@@ -60,8 +82,25 @@ app.get("/signup", (req, res) => {
     res.send(signupPageRender);
 });
 
+app.get("/variablesandfunctions", (req, res) => {
+    res.send(javascriptPage);
+})
+
+app.get("/restapi", (req, res) => {
+    res.send(restApiPage);
+})
+
+app.get("/nodejs", (req, res)=> {
+    res.send(nodeJSPage);
+})
+
+app.get("/adminpanel", (req, res) => {
+    res.send(adminPage);
+})
+
 
 //Post a new user
+//It is possible with importing mysql to use direct sql commands and store them in variables
 app.post("/signup", async (req, res) => {
     const user = req.body.email
     const hashedPassword = await bcrypt.hash(req.body.password,10);
@@ -74,13 +113,10 @@ app.post("/signup", async (req, res) => {
         const insert_query = mysql.format(sqlInsert,[user, hashedPassword])
 
         await connection.query (search_query, async (err, result) => {
-            if (err) throw (err)
-            console.log("------> Search Results")
-            console.log(result.length)
             if (result.length != 0) {
              connection.release()
              console.log("------> User already exists")
-             res.sendStatus(409)
+             res.redirect("/signup")
             } 
             else {
              await connection.query (insert_query, (err, result)=> {
@@ -88,14 +124,14 @@ app.post("/signup", async (req, res) => {
              if (err) throw (err)
              console.log ("--------> Created new User")
              console.log(result.insertId)
-             res.sendStatus(201)
+             res.redirect("/login")
             })
            }
 })
 })
 })
 
-//Login auth //admin edit state still to be employed
+//Login auth
 app.post("/login", (req, res)=> {
     const user = req.body.email
     const password = req.body.password
@@ -112,7 +148,7 @@ app.post("/login", (req, res)=> {
          const hashedPassword = result[0].password
          //get the hashedPassword from result
         if (await bcrypt.compare(password, hashedPassword)) {
-        res.send(`${user} is logged in!`)
+        res.redirect("/adminpanel")
         }
         else {
         res.send("Password or email incorrect!")

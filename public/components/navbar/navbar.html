@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     %%PAGE_CSS_LINK%%
+
+    <link rel="stylesheet" href="../components/navbar/navbar.css">
     
     <title>%%TAB_TITLE%%</title>
 </head>
@@ -14,15 +16,30 @@
       <div class="w3-col s3">
         <a href="/" class="w3-button w3-block w3-light-blue">HOME</a>
       </div>
-      <div class="w3-col s3">
-        <a class="w3-button w3-block w3-light-blue">ABOUT</a>
+      
+      <div class="dropdown">
+        <a class="w3-button w3-block w3-light-blue" class="dropbtn">TOPICS</a>
+          <i class="fa fa-caret-down"></i>
+        </button>
+
+        <div class="dropdown-content">
+          <a href="/variablesandfunctions">Javscript</a>
+          <a href="/nodejs">Node.js</a>
+          <a href="/restapi">REST API</a>
+          
+        </div>
       </div>
+
       <div class="w3-col s3">
         <a class="w3-button w3-block w3-light-blue">Creator</a>
       </div>
+
       <div class="w3-col s3">
         <a href="/login" class="w3-button w3-block w3-light-blue">Login</a>
       </div>
+
     </div>
   </div>
-
+  </div>
+<br>
+<br>

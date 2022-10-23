@@ -1,0 +1,76 @@
+<h1>REST API</h1>
+<div class="scroll-menu">
+  <h3>Scroll section</h3>
+  <a data-link="section-1" class="scroll-to"><button class="w3-button w3-light-blue">HTTP Methods</button></a>
+  </div>
+
+  <div class="w3-container" id="section-1">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">HTTP Methods</span></h5>
+      <p>GET ->     "/endpoint" Get all data on the endpoint</p>
+      <p>GET ->     "/endpoint/:{id}" Get specific data on the id</p>
+      <p>POST ->    "/endpoint" Creates a new entity</p>
+      <p>PATCH ->   "/endpoint/:{id}" Updates specific parts of the entity on id</p>
+      <p>PUT ->     "/endpoint/:{id}" Updates the entire entity on id</p>
+      <p>DELETE ->  "/pokemon/:{id} Deletes an entity on id</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>        
+app.get("/weapons", (req, res) => {
+    res.send({
+        weapons: myWeapons
+    })
+})
+
+app.get("/weapons/:id", (req, res) => {
+const foundWeapon = myWeapons.find(weapon => weapon.id === Number(req.params.id))
+    res.send({ data: foundWeapon })
+})
+
+app.post("/weapons", (req, res) => {
+    const postWeapon = req.body
+    postWeapon.id = ++currentId;
+    myWeapons.push(postWeapon);
+    res.send({data: postWeapon})
+})
+
+app.put("/weapons/:id", (req, res) => {
+    const idPut = req.params.id;
+    const {id, name, ammunition} = req.body;
+    const weaponToBeUpdated = myWeapons.find((weapon) => weapon.id === idPut)
+
+    weaponToBeUpdated.id = id;
+    weaponToBeUpdated.name = name;
+    weaponToBeUpdated.ammunition = ammunition;
+
+    res.send(`updated ${idPut}`)
+})
+
+app.patch("/weapons/:id", (req, res) => {
+    const foundIndex = myWeapons.findIndex(weapon => weapon.id === Number(req.params.id))
+
+    if(foundIndex !== -1){
+      const foundWeapon = myWeapons[foundIndex];
+      const weaponToUpdate = {...foundWeapon, ...req.body, id: Number(req.params.id)};
+        myWeapons[foundIndex] = weaponToUpdate;
+        res.send({data: weaponToUpdate});
+    }else{
+        res.status(404).send({ data: undefined});
+    }
+
+})
+
+app.delete("/weapons/:id", (req, res) => {
+    const foundIndex = myWeapons.findIndex(weapon => weapon.id === Number(req.params.id))
+    if(foundIndex !== -1){
+        const deletedWeapon = myWeapons.splice(foundIndex, 1)[0];
+        res.send({ data: deletedWeapon });
+    }else{
+        res.status(404).send({ data: undefined});
+    }
+})
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="./pages/topics/scroll.js"></script>

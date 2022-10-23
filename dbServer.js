@@ -1,5 +1,6 @@
 import mysql from "mysql"
 
+//Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
 import dotenv from "dotenv";
 
 dotenv.config()

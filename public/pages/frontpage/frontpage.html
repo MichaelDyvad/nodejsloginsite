@@ -2,117 +2,12 @@
   <header class="bgimg w3-display-container w3-grayscale-min" id="home">
   </header>
   
-  <div>
-    <h3>Scroll section</h3>
-    <a data-link="section-1" class="scroll-to"><button class="w3-button w3-light-blue">Callback Functions</button></a>
-    <a data-link="section-2" class="scroll-to"><button class="w3-button w3-light-blue">Serving Client</button></a>
-    <a data-link="section-3" class="scroll-to"><button class="w3-button w3-light-blue">Loop methods</button></a>
-    <a data-link="section-4" class="scroll-to"><button class="w3-button w3-light-blue">Package.json</button></a>
-    <a data-link="section-5" class="scroll-to"><button class="w3-button w3-light-blue">Modules</button></a>
-    <a data-link="section-6" class="scroll-to"><button class="w3-button w3-light-blue">Npm</button></a>
-    <a data-link="section-7" class="scroll-to"><button class="w3-button w3-light-blue">Express</button></a>
+<h1>Welcome to Michaelpedia</h1>
+
+<div class="w3-container" id="section-1">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Info</span></h5>
+    <p>The purpose of this website is to provide knowledge of the topics; Node.js, Javascript and API</p>
+    <p>It is possible to create a user and login to the websites admin panel where u at some point can edit and post topics to the website just like wikipedia</p>
   </div>
-  
-
-
-  <div class="w3-container" id="section-1">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Callback functions</span></h5>
-            <p>A callback function is a function passed to another function as an argument. The way a callback functions operates is by being invoked after the first function completes</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-            <pre>
-          app.get("/", (req, res) => {
-            res.send(frontPageRender);
-          });
-          
-          app.get("/login", (req, res) => {
-              res.send(loginPageRender);
-          });
-          
-          app.get("/signup", (req, res) => {
-              res.send(signupPageRender);
-          });
-          </pre>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-container" id="section-2">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Serving client</span></h5>
-      <p>Client Site</p>
-      <p>Client Site serving html is done using res.sendFile and the path module. Client site serving respons to the client with the html file.</p>
-      <p>Server site</p>
-      <p>Server site serving is done by concatenating the html files and parses them to a String</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>Client Site:</p>
-        <pre>
-          
-
-        </pre>
-      </div>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>Server Site:</p>
-        <pre>
-const frontPageRender = renderPage("/frontpage/frontpage.html",
-  {
-    tabTitle: "MichaelPedia",
-    cssLink: `link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"`
-           + `link rel="stylesheet" href="./pages/frontpage/frontpage.css"`
-  })
-        </pre>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-container" id="section-3">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Loop methods</span></h5>
-      <p>To Do</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>code snippet here</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-container" id="section-4">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Package.json</span></h5>
-      <p>To Do</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>code snippet here</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-container" id="section-5">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Modules</span></h5>
-      <p>To Do</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>code snippet here</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-container" id="section-6">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Npm</span></h5>
-      <p>pakkehåndtering</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>code snippet here</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="w3-container" id="section-7">
-    <div class="w3-content" style="max-width:700px">
-      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Express</span></h5>
-      <p>To Do</p>
-      <div class="w3-panel w3-leftbar w3-light-grey">
-        <p>code snippet here</p>
-      </div>
-    </div>
-  </div>
-
-  <script src="./pages/frontpage/frontpage.js"></script>
+</div>

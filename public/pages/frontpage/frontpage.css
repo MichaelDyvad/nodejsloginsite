@@ -1,15 +1,6 @@
-body, html {
-    height: 100%;
-    font-family: "Inconsolata", sans-serif;
-  }
-  
   .bgimg {
     background-position: center;
     background-size: cover;
-    background-image: url("https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png");
-    min-height: 77%;
-  }
-  
-  .menu {
-    display: none;
+    background-image: url("https://railsware.com/blog/wp-content/uploads/2018/09/2400%D1%851260-rw-blog-node-js.png");
+    min-height: 80%;
   }

@@ -1,0 +1,174 @@
+<h1>Node.js</h1>
+<div class="scroll-menu">
+  <h3>Scroll section</h3>
+  <a data-link="section-1" class="scroll-to"><button class="w3-button w3-light-blue">Express</button></a>
+  <a data-link="section-2" class="scroll-to"><button class="w3-button w3-light-blue">npm and tools</button></a>
+  <a data-link="section-3" class="scroll-to"><button class="w3-button w3-light-blue">Package.json</button></a>
+  <a data-link="section-4" class="scroll-to"><button class="w3-button w3-light-blue">Modules</button></a>
+  <a data-link="section-5" class="scroll-to"><button class="w3-button w3-light-blue">Client-side rendering vs. Server-side rendering</button></a>
+  </div>
+
+
+  <div class="w3-container" id="section-1">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Express</span></h5>
+      <p>Express is a back-end web application framework which is used to build RESTful API's. Express also handles routing, http methods and which port the webapplication is running on. Express is installed with npm and imported into app.js</p>
+      <p>Express is also used to tell the app which modules and functions of the modules the app will inclde. For example app.use(express.json()) or app.use(bodyParser.json()).</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+import express from "express"
+const app = express();
+app.use(express.json());
+app.use(bodyParser.json())
+
+const server = app.listen(PORT, (error)=> {
+  if(error){
+      console.log(error)
+  }
+  console.log("Server is running on port", server.address().port)
+})
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-2">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">npm and tools</span></h5>
+      <p>npm(node package manager) is an online repository for publishing open-source Node.js project. npm is also a command line utiliy that provides package installation, version management, and dependency management.</p>
+      <p>Diffrent packages we install with npm is downloaded and update from npm's online repository</p>
+      <p>Nodemon: is a developer tool we use to make the server restart automatically when changes in the files are detected.</p>
+      <p>Cross-env: makes it possible to have a single command in the script that can read the environment variable properly on every platform. The problem without cross-env is the syntax is diffrent on os platforms and windows will usually experience the most problems. The use of cross-env is therefore a common ground for all developers on the node.js project.</p>
+      <p>Dotenv: is used when connection to a database is needed. Dotenv will automatically load environment variables from a .env file into process.env </p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+//npm installation
+//install the latest version of npm
+npm install -g
+
+//the syntax for installing packages in the command-line
+npm install express
+npm install --save-dev nodemon
+npm install --save-dev cross-env
+npm install --save-dev dotenv
+        </pre>
+      </div>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+//usage of dotenv
+import dotenv from "dotenv";
+
+dotenv.config()
+
+//loads the database environment variable into const
+const DB_HOST = process.env.DB_HOST
+const DB_USER = process.env.DB_USER
+const DB_PASSWORD = process.env.DB_PASSWORD
+const DB_DATABASE = process.env.DB_DATABASE
+const DB_PORT = process.env.DB_PORT
+        </pre>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-3">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Package.json</span></h5>
+      <p>package.json is a server site file which containts meta-data about the Node.js project. The file is used to provide infomation to npm about the project and which dependencies is used in the project</p>
+      <p>It is common to use npm install after the package.json file has defined the dependencies needed in the project</p>
+      <p>package.json contains meta data like "type", "engines", "dependencies", "scripts" and "devDependencies"</p>
+      <p>Scipts: is a way to make npm run diffrent terminal commands which is defined in the meta-data script section. An example of this would be running the project with nodemon.cmd and giving meta-data needed to deploy a project</p>
+      <p>Dependencies & devDependencies: is the diffrent dependencies we use in the project and the version they run.</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+{
+  "type": "module",
+  "engines": {
+    "node": "18.8.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  },
+  "name": "nodejslogin",
+  "version": "1.0.0",
+  "description": "nodejs login site",
+  "main": "app.js",
+  "scripts": {
+    "start-dev": "cross-env PORT=8080 nodemon.cmd app.js",
+    "start-prod": "node app.js"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  }
+}
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-4">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Modules</span></h5>
+      <p>In a Node.js project we have the folder node_modules which contains a set of built-in modules that we can import to out javascript files. Modules will automatically get stored in the node_modules folder when we use "npm install". Afterwards we can import the modules.</p>
+      <p>Modules makes it easier for us as developers to import functions and functionality into our project without writing the code.</p>
+      <p>When we use the "type": "module" in the package.json file we choose to use the syntax "import" instead of "require".</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+"type": "module"
+
+import express from "express"
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container" id="section-5">
+    <div class="w3-content" style="max-width:700px">
+      <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide w3-light-blue">Client-side rendering vs. Server-side rendering</span></h5>
+      <p>CSR: is when the process is done on the client(users) computer. This means that the javascript runs on the clients browser without involving processing on the server. CSR could for example be dynamic update on a button click or a reload like the pokemon code example below. In this example when the user reloads the result of win or loss will give diffrent results which is javacsript that run on the client.</p>
+      <p>SSR: is when the process takes place on the server instead of the client. SSR is loaded on the server and therefore not visible to the client. When we use renderpage() all the html content is loaded as string and send to the client all at once.</p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+        <pre>
+//Client-side rendering
+
+//html code
+<.h1 id="who-won">/h1>
+<.script src="../pages/battle/battle.js">/script>
+
+
+//Javascript
+const iWon = Math.random() >= 0.5;
+const whoWonHeader = document.getElementById("who-won");
+
+if(iWon) {
+  whoWonHeader.innerText = "You Won!"
+}else{
+  whoWonHeader.innerText = "You Lost!"
+}
+        </pre>
+      </div>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <pre>
+//Server-side rendering
+const frontPageRender = renderPage("/frontpage/frontpage.html",
+{
+  tabTitle: "MichaelPedia",
+  cssLink:`link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"`
+  + `link rel="stylesheet" href="./pages/frontpage/frontpage.css"`
+}
+)
+
+app.get("/", (req, res) => {
+  res.send(frontPageRender);
+});
+        </pre>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./pages/topics/scroll.js"></script>

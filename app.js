@@ -4,10 +4,8 @@ import express from "express"
 import bcrypt from "bcrypt"
 //Database
 import mysql from "mysql"
-//Bodyparser can parse html directly to the post request 
-import bodyParser from "body-parser";
 
-import { renderPage } from "./public/util/templateEngine.js";
+import { renderPage } from "./util/templateEngine.js";
 import { db } from "./dbServer.js";
 
 //Initialized express library on cost app
@@ -15,10 +13,8 @@ const app = express();
 
 app.use(express.static("public"));
 
-//Body parser is used to read the email and password input directly from the html with fx. req.body.email
-app.use(bodyParser.json())
-
-app.use(bodyParser.urlencoded({
+//express.urlencoded is used to read the email and password input directly from the html with fx. req.body.email with the id from html
+app.use(express.urlencoded({
     extended: true
 }))
 
@@ -127,8 +123,8 @@ app.post("/signup", async (req, res) => {
              res.redirect("/login")
             })
            }
-})
-})
+        })
+    })
 })
 
 //Login auth
@@ -137,25 +133,25 @@ app.post("/login", (req, res)=> {
     const password = req.body.password
 
     db.getConnection ( async (err, connection)=> {
-     if (err) throw (err)
-     const sqlSearch = "Select * from usertable where user = ?"
-     const search_query = mysql.format(sqlSearch,[user])
-     await connection.query (search_query, async (err, result) => {
-      connection.release()
+        if (err) throw (err)
+        const sqlSearch = "Select * from usertable where user = ?"
+        const search_query = mysql.format(sqlSearch,[user])
+        await connection.query (search_query, async (err, result) => {
+        connection.release()
       
-      if (err) throw (err)
-      else {
-         const hashedPassword = result[0].password
-         //get the hashedPassword from result
-        if (await bcrypt.compare(password, hashedPassword)) {
-        res.redirect("/adminpanel")
-        }
+        if (err) throw (err)
         else {
-        res.send("Password or email incorrect!")
+            const hashedPassword = result[0].password
+             //get the hashedPassword from result
+            if (await bcrypt.compare(password, hashedPassword)) {
+            res.redirect("/adminpanel")
+            }
+            else {
+            res.send("Password or email incorrect!")
+            }
         }
-      }
-})
-})
+        })
+    })
 })
 
 
